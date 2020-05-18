@@ -1,0 +1,49 @@
+<div class="example-container mat-elevation-z8">
+    <h2>Restaurant Edit Reviews</h2>
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+        <a mat-flat-button color="primary" (click)="casesDetails()"><mat-icon>info</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <form [formGroup]="reviewsForm" (ngSubmit)="onFormSubmit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Title" formControlName="title"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!reviewsForm.get('title').valid && reviewsForm.get('title').touched">Please enter Title<Title></Title></span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Restaurant</mat-label>
+          <input matInput placeholder="Restaurant" formControlName="restaurant"
+            [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!reviewsForm.get('restaurant').valid && reviewsForm.get('restaurant').touched">Please enter Restaurant<Title></Title></span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Dish</mat-label>
+          <input matInput placeholder="Dish" formControlName="dish"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!reviewsForm.get('dish').valid && reviewsForm.get('dish').touched">Please enter the Dish<Title></Title></span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Review</mat-label>
+          <input matInput placeholder="Review" formControlName="review"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!reviewsForm.get('review').valid && reviewsForm.get('review').touched">Please enter a Review</span>
+          </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button type="submit" [disabled]="!reviewsForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
